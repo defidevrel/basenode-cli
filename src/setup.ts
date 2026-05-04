@@ -64,11 +64,30 @@ async function promptWizard(opts: SetupOptions): Promise<WizardAnswers> {
   const rl = createInterface({ input, output });
   try {
     const nodeDirDefault = opts.nodeDir ? resolve(opts.nodeDir) : defaultNodeDirFromRepo();
+    if (!opts.nodeDir) {
+      console.log("Base node stack lives in the official repo: https://github.com/base/node");
+      console.log(
+        "  • Already cloned? Enter the directory that contains `docker-compose.yml`."
+      );
+      if (opts.noClone) {
+        console.log(
+          "  • You passed `--no-clone`: that directory must already exist with a base/node checkout."
+        );
+        console.log(`  • Clone first: git clone --depth 1 ${opts.gitUrl} <directory>`);
+      } else {
+        console.log(
+          "  • Starting fresh? Enter a path (or press Enter for the default) — setup will clone there if the folder is missing (needs Git on PATH)."
+        );
+        console.log(`  • Or clone yourself: git clone --depth 1 ${opts.gitUrl} <directory>`);
+      }
+      console.log("");
+    }
     const nodeDir =
       opts.nodeDir ??
       resolve(
-        (await rl.question(`Path to existing base/node checkout [${nodeDirDefault}]: `)).trim() ||
-          nodeDirDefault
+        (await rl.question(
+          `Path to base/node (existing checkout or clone destination) [${nodeDirDefault}]: `
+        )).trim() || nodeDirDefault
       );
 
     const networkRaw =
