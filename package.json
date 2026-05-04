@@ -1,15 +1,15 @@
 {
-  "name": "basenode",
+  "name": "basenode-cli",
   "version": "0.1.0",
   "description": "CLI for Base node operators — base/node setup, Azul preflight, compose day-2 ops",
   "type": "module",
   "bin": {
-    "basenode": "./dist/cli.js"
+    "basenode": "dist/cli.js"
   },
   "main": "./dist/cli.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/defidevrel/basenode-cli.git"
+    "url": "git+https://github.com/defidevrel/basenode-cli.git"
   },
   "bugs": {
     "url": "https://github.com/defidevrel/basenode-cli/issues"

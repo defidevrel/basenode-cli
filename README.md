@@ -1,6 +1,6 @@
-# basenode
+# basenode-cli
 
-npm package **`basenode`** — operator-focused CLI around **[base/node](https://github.com/base/node)** — interactive setup, **Azul-oriented** preflight (Docker, `USE_BASE_CONSENSUS`, L1 RPC, disk, NTP skew, write throughput, execution peers), day‑2 `docker compose` helpers, and optional **webhook monitoring**.
+npm package **`basenode-cli`** — operator-focused CLI around **[base/node](https://github.com/base/node)** — interactive setup, **Azul-oriented** preflight (Docker, `USE_BASE_CONSENSUS`, L1 RPC, disk, NTP skew, write throughput, execution peers), day‑2 `docker compose` helpers, and optional **webhook monitoring**. The published CLI binary is **`basenode`** (`npm install -g basenode-cli` → run `basenode --help`).
 
 Official references: [Run a Base node](https://docs.base.org/base-chain/node-operators/run-a-base-node), [Base Azul upgrade](https://docs.base.org/base-chain/node-operators/base-v1-upgrade).
 
@@ -32,8 +32,10 @@ npx . --help
 Optional global command:
 
 ```bash
-npm link   # then: basenode --help
+npm install -g basenode-cli   # then: basenode --help
 ```
+
+From a git checkout you can also use `npm link` in this repo (same `basenode` command).
 
 ## Quick start
 
