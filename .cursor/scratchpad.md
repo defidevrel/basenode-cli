@@ -1,4 +1,4 @@
-# basenode-cli — scratchpad
+# basenode (CLI) — scratchpad
 
 ## Background and Motivation
 
@@ -49,7 +49,9 @@ Each task has **success criteria** the Executor can verify before moving on (per
 - **Executor (2026-05-04)**: **Clone/update + launch** — `src/node-repo.ts` (`ensureBaseNodeRepo`), `src/compose-launch.ts` (`docker compose up`), wired into `basenode setup` via `--git-url`, `--pull`, `--no-clone`, `--launch`, `--foreground`. Non-interactive setup when **all** of `--node-dir`, `--network`, `--l1-rpc`, `--l1-beacon`, `--host-data-dir` are set (avoids stdin hangs). Dry-run into a missing directory prints clone plan and **skips `.env*` edits** until the repo exists.
 - **Executor (2026-05-04)**: **Unit tests** — `src/env-edit.ts` + `src/wizard-flags.ts` extracted for `setEnvVarLine` / `uncommentOrSet` / `isProbablyUrl` / `resolveWizardAnswersFromFlags`. **13** `node:test` cases total.
 - **Executor (2026-05-04)**: **Azul / day‑2 ops** — `setup` writes `USE_BASE_CONSENSUS=true` (base-consensus per [Base Azul upgrade](https://docs.base.org/base-chain/node-operators/base-v1-upgrade)); `--launch` runs **`basenode preflight --strict`** unless `--skip-preflight`. New commands: **`preflight`** (`src/preflight.ts`), **`status`**, **`stop`**, **`logs`**, **`upgrade`** (`src/ops.ts`). Preflight: Docker, compose `.env`, `USE_BASE_CONSENSUS`, L1 `eth_chainId` probe, disk headroom (warn/fail thresholds), P2P ports (warn if busy).
-- **Planner**: Stretch: CI workflow, README for operators, optional **`monitor`/alerting** parity with third-party helpers.
+- **Executor (shipped)**: `README.md`, `LICENSE` (MIT), `.github/workflows/ci.yml` (Node 20/22), `package.json` **`name: basenode`** (npm); **`bin`: `basenode`**.
+- **Planner**: Optional: publish to npm, consensus RPC (`7545`) checks, README badges after first CI run.
+- **Executor (2026-05-04)**: **Welcome banner** — `assets/banner.txt` (“Basenode” block ASCII + Base-blue ANSI via `src/banner.ts`). **`npm install`** runs `postinstall-welcome.mjs` (skipped when `CI=true`, `SKIP_BASENODE_WELCOME=1`, or `BASENODE_NO_BANNER=1`; non-TTY skipped). **`basenode setup`** (including default `basenode`) prints the same banner before the wizard. Published tarball includes `assets/` + `scripts/postinstall-welcome.mjs`.
 
 ## Executor's Feedback or Assistance Requests
 

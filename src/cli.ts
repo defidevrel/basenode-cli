@@ -12,6 +12,7 @@ import {
   upgradeNodeRepo,
 } from "./ops.js";
 import { runMonitor } from "./monitor.js";
+import { printWelcomeBanner } from "./banner.js";
 import { runPreflight } from "./preflight.js";
 import { runSetup } from "./setup.js";
 
@@ -231,6 +232,10 @@ function main(): void {
       console.log("");
       process.exitCode = doctorExitCode(result);
     });
+
+  program.hook("preAction", () => {
+    printWelcomeBanner();
+  });
 
   program.parse(process.argv);
 }

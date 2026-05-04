@@ -140,7 +140,7 @@ export async function runMonitor(opts: MonitorOpts): Promise<number> {
     const ok = discord
       ? await postDiscord(opts.webhookUrl, msg)
       : await postGenericWebhook(opts.webhookUrl, {
-          source: "basenode-cli",
+          source: "basenode",
           nodeDir: opts.nodeDir,
           ...snap,
           message: msg,

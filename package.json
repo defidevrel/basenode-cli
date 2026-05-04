@@ -1,17 +1,41 @@
 {
   "name": "basenode",
   "version": "0.1.0",
-  "description": "CLI to set up a Base node (Reth) with Flashblocks",
+  "description": "CLI for Base node operators — base/node setup, Azul preflight, compose day-2 ops",
   "type": "module",
   "bin": {
     "basenode": "./dist/cli.js"
   },
   "main": "./dist/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/defidevrel/basenode-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/defidevrel/basenode-cli/issues"
+  },
+  "homepage": "https://github.com/defidevrel/basenode-cli#readme",
+  "keywords": [
+    "base",
+    "base-node",
+    "ethereum",
+    "reth",
+    "docker",
+    "flashblocks",
+    "azul",
+    "cli"
+  ],
+  "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "assets",
+    "scripts/postinstall-welcome.mjs",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
+    "postinstall": "node scripts/postinstall-welcome.mjs",
     "prepack": "npm run build",
     "start": "node dist/cli.js",
     "basenode": "node dist/cli.js",
