@@ -1,0 +1,30 @@
+{
+  "name": "basenode",
+  "version": "0.1.0",
+  "description": "CLI to set up a Base node (Reth) with Flashblocks",
+  "type": "module",
+  "bin": {
+    "basenode": "./dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "start": "node dist/cli.js",
+    "basenode": "node dist/cli.js",
+    "test": "npm run build && node --test test/*.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
