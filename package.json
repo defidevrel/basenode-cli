@@ -1,6 +1,6 @@
 {
   "name": "basenode-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for Base node operators — base/node setup, Azul preflight, compose day-2 ops",
   "type": "module",
   "bin": {

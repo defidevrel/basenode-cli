@@ -4,6 +4,17 @@ npm package **`basenode-cli`** — operator-focused CLI around **[base/node](htt
 
 Official references: [Run a Base node](https://docs.base.org/base-chain/node-operators/run-a-base-node), [Base Azul upgrade](https://docs.base.org/base-chain/node-operators/base-v1-upgrade).
 
+## Install from npm
+
+Registry: **[npmjs.com/package/basenode-cli](https://www.npmjs.com/package/basenode-cli)**
+
+```bash
+npm install -g basenode-cli
+basenode --help
+```
+
+One-off without a global install: `npx basenode-cli --help` (same **`basenode`** CLI).
+
 ## Requirements
 
 - **Node.js ≥ 20**
